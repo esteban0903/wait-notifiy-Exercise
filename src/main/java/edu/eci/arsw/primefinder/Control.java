@@ -4,8 +4,31 @@
  * and open the template in the editor.
  */
 package edu.eci.arsw.primefinder;
-
 /**
+ * The {@code Control} class manages the execution and coordination of multiple {@link PrimeFinderThread}
+ * instances to find prime numbers in a specified range. It divides the workload among a fixed number of threads,
+ * periodically pauses their execution to report progress, and resumes them upon user input.
+ * <p>
+ * The class uses a monitor object to synchronize pause and resume operations across all threads.
+ * After a configurable interval, the main thread pauses all worker threads, displays the total number
+ * of primes found so far, and waits for the user to press Enter before resuming the computation.
+ * </p>
+ * <p>
+ * <b>Thread Safety:</b> The pause and resume mechanisms are synchronized using a monitor object to ensure
+ * safe communication between the control thread and worker threads.
+ * </p>
+ *
+ * <ul>
+ *   <li>Number of threads: {@code NTHREADS}</li>
+ *   <li>Maximum value to check for primes: {@code MAXVALUE}</li>
+ *   <li>Pause interval in milliseconds: {@code TMILISECONDS}</li>
+ * </ul>
+ *
+ * <b>Usage:</b>
+ * <pre>
+ *     Control control = Control.newControl();
+ *     control.start();
+ * </pre>
  *
  */
 public class Control extends Thread {
