@@ -26,7 +26,7 @@ public class Control extends Thread {
      * Constructor for the Control class.
      * Initializes the PrimeFinderThread array and creates the threads.
      */
-    private Control() {
+    Control() {
         super();
         this.pft = new  PrimeFinderThread[NTHREADS];
 
